@@ -39,8 +39,8 @@ export default function Hero({id, name}) {
     const [visible, setVisible] = useState(false)
 
 
-    const togleScroll = (id) => {
-        const scrollView = document.getElementById(id)
+    const togleScroll = (text) => {
+        const scrollView = document.getElementById(text)
         if (scrollView) {
             scrollView.scrollIntoView({behavior: 'smooth'})
         }
@@ -127,7 +127,7 @@ export default function Hero({id, name}) {
             (
                 <section className='max-w-[400px] m-auto'>
                     {loading ? (
-                    <section className='h-screen relative z-30 flex justify-center items-center bg-black w-full m-auto text-xl'>
+                    <section className='h-screen relative z-30 flex justify-center items-center bg-black overflow-hidden w-full '>
                         
                         {/* <div className='absolute  m-auto z-30'>
                             <svg
