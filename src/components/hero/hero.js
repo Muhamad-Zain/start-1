@@ -31,11 +31,8 @@ import AnimateSee from '@/animation/animateSee/page';
 
 export default function Hero({id, name}) {
 
-    // console.log(name);
     
     const [weddingData, setWeddingData] = useState([])
-    // console.log(weddingData);
-    // const [namaTamu, setNamaTamu] = useState('')
     const [isHidden, setIsHidden] = useState(true)
     const [loading, setLoading] = useState(true)
     const [bgToggle, setBgTogle] = useState('bg-black')
@@ -49,19 +46,14 @@ export default function Hero({id, name}) {
         }
     }
 
-    // const bgToggle = document.getElementById('bgToggle');
     const toggleMusic = () => {
         const audio = document.getElementById('weddingMusic');
         if (audio.paused) {
           audio.play();
           setBgTogle('bg-black')
-        //   bgToggle.style.backgroundColor = 'black'
         } else {
           audio.pause();
           setBgTogle('bg-red-600')
-        //   bgToggle.className = 'bg-red'
-        // bgToggle.style.backgroundColor = 'red'
-
         }
       };
 
@@ -70,11 +62,9 @@ export default function Hero({id, name}) {
         setIsHidden(false)
         document.body.style.overflow = 'auto'
         setTimeout(() => {
-            // const sectionElement = document.querySelector(`.${style.bgSection}`);
             const selectId = document.getElementById('page2');
       
             if (selectId) {
-            //   sectionElement.style.height = '100vh';
               selectId.scrollIntoView({ behavior: 'smooth' });  // Scroll setelah delay
             }
           }, 100); 
