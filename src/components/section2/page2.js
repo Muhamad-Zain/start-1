@@ -11,7 +11,7 @@ import AnimateSee from "@/animation/animateSee/page";
 export default function Page2 ({data}){
   
     const [isClient, setIsClient] = useState(false);
-    const WeddingDay = data?.date?.dateAll
+    const WeddingDay = data?.date?.all
     
     const wedingDate =  new Date(`${WeddingDay}T10:00:00`)
 
@@ -59,8 +59,8 @@ const renderer = ({days, hours, minutes, seconds, completed }) => {
 const handleSaveDate = () => {
   const startDate = wedingDate.toISOString().replace(/-|:|\.\d\d\d/g,"").split(".")[0] + "Z"; // format UTC
   const endDate = new Date(wedingDate.getTime() + 2 * 60 * 60 * 1000).toISOString().replace(/-|:|\.\d\d\d/g,"").split(".")[0] + "Z"; // 2 jam setelah acara
-  const eventTitle = `Wedding of ${data?.name?.mens} & ${data?.name?.grils}`;
-  const eventDetails = `Join us in celebrating the wedding of ${data?.name?.mens} & ${data?.name?.grils}.`;
+  const eventTitle = `Wedding of ${data?.name?.nameOne} & ${data?.name?.nameTwo}`;
+  const eventDetails = `Join us in celebrating the wedding of ${data?.name?.nameOne} & ${data?.name?.nameTwo}.`;
   const eventLocation = "Bojonegoro, Indonesia";
 
   const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventTitle)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(eventDetails)}&location=${encodeURIComponent(eventLocation)}`;
@@ -69,7 +69,7 @@ const handleSaveDate = () => {
 };
 
     return(
-      <section className="bg-[#2f6d27fa]">
+      <section className="bg-[#b0b4b0fa]">
         <section className={style.bg} id="page2">
             {/* <div className="relative h-[100vh] z-40"> */}
             <div className=" absolute bottom-10 flex-row justify-center w-full items-center">
@@ -77,9 +77,9 @@ const handleSaveDate = () => {
                 <div className="text-white  z-20 text-center relative ">
                     <p>The Wedding Of</p>
                     <div className="sacramento font-bold text-4xl py-5 flex justify-center items-center grid-cols-3 gap-1">
-                      <h1>{data?.name?.mens}</h1>
+                      <h1>{data?.name?.nameOne}</h1>
                        <h1 className="text-5xl px-1">&</h1> 
-                       <h1>{data?.name?.grils}</h1>
+                       <h1>{data?.name?.nameTwo}</h1>
                     </div>
                     <div>
                     {isClient && <Countdown

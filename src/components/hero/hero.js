@@ -117,7 +117,7 @@ export default function Hero({id, name}) {
             {visible ? (
                 <div className='flex justify-center items-center w-full h-screen'>
                 <AnimateSee>
-                    <div className='w-2/5 m-auto border-4 border-black border-double rounded-xl text-center '>
+                    <div className='w-[90%] sm:w-1/2 m-auto border-4 border-black border-double rounded-xl text-center '>
                         <h1 className='bg-orange-400 rounded-t-lg text-3xl font-bold p-2'>Warning ...!</h1>
                         <p className='italic p-2'>Mohon Maaf jika mengganggu kenyamanan anda, content ini hanya tersedia untuk tampilan Handphone </p>
                     </div>
@@ -129,7 +129,7 @@ export default function Hero({id, name}) {
                     {loading ? (
                     <section className='h-screen relative z-30 flex justify-center items-center bg-black w-full m-auto text-xl'>
                         
-                        <div className='absolute  m-auto z-30'>
+                        {/* <div className='absolute  m-auto z-30'>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="75"
@@ -141,7 +141,7 @@ export default function Hero({id, name}) {
                                 <circle cx="50" cy="50" r="45" stroke="#00000" strokeWidth="5" />
                                 <circle cx="50" cy="50" r="45" stroke="#3498db" strokeWidth="5" strokeDasharray="100" strokeDashoffset="75" className="animate-loader" />
                             </svg>
-                        </div>
+                        </div> */}
                         <div className={style.bubbleContainer}>
                             <div className={style.bubble}></div>
                             <div className={style.bubble}></div>
@@ -157,9 +157,9 @@ export default function Hero({id, name}) {
                         <AnimateSee>
                         <p className="tracking-widest italic pb-5 ">Wedding Invitation</p>
                         <h2 className="sacramento text-[3rem] font-extrabold  p-5 leading-[3.5rem]  text-orange-950" style={{ textShadow: '1px 1px white' }}>
-                            {weddingData?.name?.mens}
+                            {weddingData?.name?.nameOne}
                             <br />&<br />
-                            {weddingData?.name?.grils}
+                            {weddingData?.name?.nameTwo}
                         </h2>
                         <p className="">Kepada Yth.</p>
                         <h3 className="py-2 text-xl text-white font-bold" style={{ textShadow: '2px 2px black' }}>{name}</h3>

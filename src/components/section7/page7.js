@@ -18,7 +18,7 @@ export default function Page7({id}) {
 
     const handleSend = (e) => {
         e.preventDefault()
-        const messages = ref(database, `wedings/${id}/ucapan/${Date.now()}`)
+        const messages = ref(database, `startOne/${id}/expresion/${Date.now()}`)
         set(messages, {
             name,
             text: message
@@ -27,7 +27,7 @@ export default function Page7({id}) {
         setMessage("")
     }
     useEffect(() => {
-        const messagesRef = ref(database, `wedings/${id}/ucapan`); // referensi untuk mengambil ucapan
+        const messagesRef = ref(database, `startOne/${id}/expresion`); // referensi untuk mengambil ucapan
         onValue(messagesRef, (snapshot) => {
             const data = snapshot.val();
             const ucapanList = [];

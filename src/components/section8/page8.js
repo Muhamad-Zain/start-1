@@ -3,7 +3,7 @@ import ImgCouple from '@/assets/img/couple-image.png'
 import { FaWhatsapp } from "react-icons/fa";
 import AnimateSee from "@/animation/animateSee/page";
 import PropTypes from "prop-types";
-
+import { SiShopee } from "react-icons/si";
 
 
 export default function Page8({data}) {
@@ -21,11 +21,13 @@ export default function Page8({data}) {
                     </p>
                     <p className='font-bold'>Wassalamu`alaikum wr. wb.</p>
                     <h3 className="italic font-bold pt-10">Dari Kami yang Berbahagia :</h3>
-                    <h3 className='sacramento text-3xl font-bold py-5'>{data?.name?.mens} & {data?.name?.grils}</h3>
+                    <h3 className='sacramento text-3xl font-bold py-5'>{data?.name?.nameOne} & {data?.name?.nameTwo}</h3>
                 </div>
             </AnimateSee>
-                <div className='pt-20 pb-10 text-white text-center m-auto'>
-                    <FaWhatsapp  className='fill-current text-center text-2xl m-auto animate-bounce' />
+                <p className="text-center pt-16 text-white">Create Invitation by i-vee </p>
+                <div className=' pb-10 text-white flex justify-around w-12 m-auto'>
+                    <FaWhatsapp  className='fill-current text-center  ' />
+                    <SiShopee className='fill-current text-center  ' />
                 </div>
         </section>
     )

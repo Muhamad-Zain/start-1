@@ -32,15 +32,15 @@ export default function Page4({data}){
                                     <Image src={ImgMen} alt='img-men' className='' />
                                 </div>
                                 <div className='text-center text-white  py-5'>
-                                    <h3 className='sacramento text-3xl font-bold'>{data?.namaLengkap?.mens}</h3>
-                                    <p className='leading-4 text-sm'>Putra dari<br/> Bapak {data?.parent?.mens?.parentMens} dan Ibu {data?.parent?.mens?.parentGrils}</p>
+                                    <h3 className='sacramento text-3xl font-bold'>{data?.name?.nameLengkap?.nameOne}</h3>
+                                    <p className='leading-4 text-sm' dangerouslySetInnerHTML={{ __html: data?.parent?.nameOne }}></p>
                                 </div>
                                 
                                 <div className='w-10 text-white flex justify-around m-auto'>
-                                    <Link href='' className=' ' >
+                                    <Link href={`${data?.sosmed?.mens?.ig}`} className=' ' >
                                         <GrInstagram className=' text-sm bg-white bg-opacity-15' />
                                     </Link>
-                                    <Link href='' className=' ' >
+                                    <Link href={`${data?.sosmed?.mens?.facebook}`} className=' ' >
                                         <RiFacebookCircleLine className=' text-sm border  rounded-md bg-white bg-opacity-15 ' />
                                     </Link>
                                 </div>
@@ -59,14 +59,14 @@ export default function Page4({data}){
                                 <Image src={ImgGrils} alt='img-men' className='' />
                             </div>
                             <div className='text-center text-white  py-5'>
-                                <h3 className='sacramento text-3xl font-bold'>{data?.namaLengkap?.grils}</h3>
-                                <p className='leading-4 text-sm'>Putri dari<br/> Bapak {data?.parent?.grils?.parentMens} dan Ibu {data?.parent?.grils?.parentGrils} </p>
+                                <h3 className='sacramento text-3xl font-bold'>{data?.name?.nameLengkap?.nameTwo}</h3>
+                                <p className='leading-4 text-sm' dangerouslySetInnerHTML={{ __html: data?.parent?.nameTwo }}></p>
                             </div>
                             <div className='w-10 text-white flex justify-around m-auto'>
-                                <Link href='' className=' ' >
+                                <Link href={`${data?.sosmed?.mens?.ig}`} className=' ' >
                                     <GrInstagram className=' text-sm bg-white bg-opacity-15' />
                                 </Link>
-                                <Link href='' className=' ' >
+                                <Link href={`${data?.sosmed?.mens?.facebook}`} className=' ' >
                                     <RiFacebookCircleLine className=' text-sm border  rounded-md bg-white bg-opacity-15 ' />
                                 </Link>
                             </div>
