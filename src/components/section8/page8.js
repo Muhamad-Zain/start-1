@@ -8,7 +8,7 @@ import { SiShopee } from "react-icons/si";
 
 export default function Page8({data}) {
     return(
-        <section className="bg-[#12300efa] py-20">
+        <section className="bg-[#0c130cfa] py-20">
             <AnimateSee>
                 <div className="w-10/12 rounded-xl m-auto border-4 border-double  ">
                     <Image src={ImgCouple} alt='' />
