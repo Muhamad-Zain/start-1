@@ -4,6 +4,10 @@ import { useState } from "react"
 
 
 export default function AddData() {
+
+    const [id, setId] = useState('')
+    const [loading, setLoading] = useState(false)
+    const [params, setParams] = useState('')
     const [data, setData]= useState({
         name:{nameOne:'',nameTwo:'',namaLengkap:{nameOne:'',nameTwo:''}},
         date:{akad:{date:'',day:'',month:'',time:''},resepsi:{date:'',day:'',month:'',time:''},all:'',years:''},
@@ -14,7 +18,7 @@ export default function AddData() {
         expresion:''
 
     })
-    console.log(data);
+    // console.log(data);
     
 
   const updateNestedState = (path, value) => {
@@ -31,11 +35,18 @@ export default function AddData() {
         updateNestedState(name, value);
       };
 
-      const [id, setId] = useState('')
     const handleSend = async (e) => {
         e.preventDefault()
-
-        await addDataToFirebase(id,data)
+        try {
+          setLoading(true)
+          await addDataToFirebase(id,data)
+          // setData('')
+          setLoading(false)
+          setParams(`https://start-1-ecru.vercel.app/${id}`)
+        } catch (error) {
+          console.log(error);
+          
+        }
 
         
     }
@@ -46,40 +57,40 @@ export default function AddData() {
                 <input className="p-2 rounded-md outline-none mt-10" placeholder="Buat id" onChange={(e) => setId(e.target.value)} required />
                 <form onSubmit={handleSend}  className="mb-10">
                     <label className="text-xl italic font-bold">Nama</label>
-                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="name.nameOne" placeholder="Nama" />
-                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="name.nameTwo" placeholder="Nama" />
+                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="name.nameOne"required placeholder="Nama" />
+                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="name.nameTwo"required placeholder="Nama" />
 
                     <label className="text-xl italic font-bold">Nama Lengkap</label>
-                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="name.nameLengkap.nameOne" placeholder="Nama Lengkap"/>
-                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="name.nameLengkap.nameTwo" placeholder="Nama Lengkap"/>
+                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="name.nameLengkap.nameOne"required placeholder="Nama Lengkap"/>
+                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="name.nameLengkap.nameTwo"required placeholder="Nama Lengkap"/>
 
                     <label className="text-xl italic font-bold">Nama Orang Tua</label>
-                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="parent.nameOne" placeholder="Nama Ortu " />
-                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="parent.nameTwo" placeholder="Nama Ortu " />
+                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="parent.nameOne"required placeholder="ex. Putra pertama dari ... " />
+                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="parent.nameTwo"required placeholder="ex. Putra pertama dari ... " />
 
                     <label className="text-xl italic font-bold">Date</label>
                     <p>Akad</p>
-                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="date.akad.date" placeholder="Tanggal ex.02" />
-                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="date.akad.day" placeholder="Hari ex.Minggu" />
-                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="date.akad.month" placeholder="Bulan ex.Nov" />
-                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="date.akad.time" placeholder="Waktu ex.02.00" />
+                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="date.akad.date"required placeholder="Tanggal ex.02" />
+                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="date.akad.day"required placeholder="Hari ex.Minggu" />
+                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="date.akad.month"required placeholder="Bulan ex.Nov" />
+                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="date.akad.time"required placeholder="Waktu ex.02.00" />
                     <p>Resepsi</p>
-                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="date.resepsi.date" placeholder="Tanggal ex.02" />
-                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="date.resepsi.day" placeholder="Hari ex.Minggu" />
-                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="date.resepsi.month" placeholder="Bulan ex.Nov" />
-                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="date.resepsi.time" placeholder="Waktu ex.02.00" />
+                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="date.resepsi.date"required placeholder="Tanggal ex.02" />
+                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="date.resepsi.day"required placeholder="Hari ex.Minggu" />
+                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="date.resepsi.month"required placeholder="Bulan ex.Nov" />
+                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="date.resepsi.time"required placeholder="Waktu ex.02.00" />
                     <p>tgl-bln-thn</p>
-                    <input type="date" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="date.all" placeholder="" />
+                    <input type="date" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="date.all"required placeholder="Tahun" />
                     <p>Tahun</p>
-                    <input type="number" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="date.years" placeholder="Tahun ex.2025" />
+                    <input type="number" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="date.years"required placeholder="Tahun ex.2025" />
 
                     <label className="text-xl italic font-bold">Location</label>
                     <p>Akad</p>
-                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="location.akad.link" placeholder="link" />
-                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="location.akad.location" placeholder="jl.Sudirman" />
+                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="location.akad.link"required placeholder="link" />
+                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="location.akad.location"required placeholder="jl.Sudirman" />
                     <p>Resepsi</p>
-                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="location.resepsi.link" placeholder="link" />
-                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="location.resepsi.location" placeholder="jl.Sudirman" />
+                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="location.resepsi.link"required placeholder="link" />
+                    <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="location.resepsi.location"required placeholder="jl.Sudirman" />
 
                     <label className="text-xl italic font-bold">Gift</label>
                     <p>01</p>
@@ -103,9 +114,16 @@ export default function AddData() {
                     <p>grils</p>
                     <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="sosmed.grils.ig" placeholder="Link Instagram " />
                     <input type="text" className="p-2  rounded-md outline-none w-full mb-2" onChange={handleChange} name="sosmed.grils.facebook" placeholder="Link Facebook " />
-                    <button type="submit" className="bg-green-500 p-2 w-full rounded-md border my-10">Add to Firebase</button>
+                    <button type="submit" disabled={loading ? true :false} className="bg-green-500 p-2 w-full rounded-md border my-10">{loading ? 'loading...' : 'Add to Firebase'}</button>
                 </form>
             </div>
+              <div className={id === '' ? 'hidden' :'visible'}>
+                <p>Link: {params}</p>
+                <button className="bg-green-800 p-1 rounded-md border px-4 ">Salin</button>
+              </div>
+            {loading ? (
+              <div className="w-full h-screen bg-black bg-opacity-50 fixed top-0 left-0 z-10"></div>
+            ):null}
         </section>
     )
 }

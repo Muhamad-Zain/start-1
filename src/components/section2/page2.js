@@ -76,17 +76,17 @@ const handleSaveDate = () => {
           <AnimateSee>
                 <div className="text-white  z-20 text-center relative ">
                     <p>The Wedding Of</p>
-                    <div className="sacramento font-bold text-4xl py-5 flex justify-center items-center grid-cols-3 gap-1">
+                    <div className="sacramento font-bold text-4xl pb-5 pt-2 flex justify-center items-center grid-cols-3 gap-1">
                       <h1>{data?.name?.nameOne}</h1>
                        <h1 className="text-5xl px-1">&</h1> 
                        <h1>{data?.name?.nameTwo}</h1>
                     </div>
-                    <div>
+                    {/* <div> */}
                     {isClient && <Countdown
                         date={wedingDate}
                         renderer={renderer}
                     />}
-                    </div>
+                    {/* </div> */}
                     <button 
                     className="bg-white bg-opacity-40 p-2 mx-auto my-5 font-bold text-xl italic flex justify-center items-center rounded-lg" 
                     onClick={handleSaveDate}

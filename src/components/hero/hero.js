@@ -1,19 +1,15 @@
 'use client'
 import { useEffect, useState } from 'react';
 import style from './style.module.css'
-import { useRouter } from 'next/navigation';
 import Page2 from '../section2/page2';
 import { FaEnvelopeOpen } from "react-icons/fa";
 import { fetchWeddingData } from '../firebase/initialFirebase';
 import { GiMusicSpell } from "react-icons/gi";
-import { GiSelfLove } from "react-icons/gi";
 import { ImHome } from "react-icons/im";
 import { ImInfo } from "react-icons/im";
 import { BiSolidCalendarHeart } from "react-icons/bi";
 import { HiMiniGiftTop } from "react-icons/hi2";
 import { SlSpeech } from "react-icons/sl";
-
-
 
 import Page3 from '../section3/page3';
 import Page4 from '../section4/page4';
@@ -89,7 +85,7 @@ export default function Hero({id, name}) {
     },[id])
     useEffect(() => {
 
-        window.scrollTo(0,0)
+        const layOut = window.scrollTo(0,0)
 
         const handleResize = () => {
             const vh = window.innerHeight * 0.01;
@@ -97,7 +93,7 @@ export default function Hero({id, name}) {
         }
         handleResize()
 
-        if(isHidden){
+        if(isHidden || layOut){
             document.body.style.overflow = 'hidden'
         } else {
             document.body.style.overflow = 'auto'
@@ -163,8 +159,8 @@ export default function Hero({id, name}) {
                         </h2>
                         <p className="">Kepada Yth.</p>
                         <h3 className="py-2 text-xl text-white font-bold" style={{ textShadow: '2px 2px black' }}>{name}</h3>
-                        <button onClick={btnElement} className="bg-slate-950 shadow-md border border-white shadow-slate-300 rounded-md flex justify-center items-center w-1/2 text-white py-1 px-4 mt-4 mx-auto">
-                            <FaEnvelopeOpen size={15} className='mr-2' />
+                        <button onClick={btnElement} className="bg-slate-950 shadow-md border border-white shadow-slate-300 rounded-md flex justify-around items-center w-[70%] text-white py-1 px-4 mt-4 mx-auto">
+                            <FaEnvelopeOpen size={15} className=' fill-current' />
                             Open
                         </button>
                         </AnimateSee>
@@ -179,7 +175,7 @@ export default function Hero({id, name}) {
                         className={`w-10 h-10 rounded-full border border-white flex justify-center items-center fixed bottom-16 left-5 z-20 ${bgToggle}`}>
                         <GiMusicSpell className='fill-current text-white rotate-icon' size={25} />
                     </button>
-                    <diV className="fixed -bottom-1 z-20 w-full">
+                    <div className="fixed -bottom-1 z-20 w-full">
                         <div className=' bg-black border border-white  bg-opacity-15 w-[80%]  m-auto relative flex justify-between grid-cols-5 text-4xl text-white  rounded-t-xl'>
                         <button onClick={() => togleScroll('home')} className='p-2'><ImHome /></button>
                         <button onClick={() => togleScroll('couple')}  className='p-2'><ImInfo /></button>
@@ -187,7 +183,7 @@ export default function Hero({id, name}) {
                         <button onClick={() => togleScroll('gift')}  className='p-2'><HiMiniGiftTop /></button>
                         <button onClick={() => togleScroll('ucapan')} className='p-2'><SlSpeech /></button>
                         </div>
-                    </diV>
+                    </div>
                     
                     <div id='home'>
                         <Page2 data={weddingData}/>
