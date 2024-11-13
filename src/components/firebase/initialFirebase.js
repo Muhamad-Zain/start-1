@@ -2,6 +2,8 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import {getDatabase, ref, get, child, set} from 'firebase/database'
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -30,6 +32,7 @@ import {getDatabase, ref, get, child, set} from 'firebase/database'
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app)
+const auth = getAuth(app)
 // const analytics = getAnalytics(app);
 
 const fetchWeddingData = async (id) => {
@@ -59,5 +62,33 @@ const addDataToFirebase = async (id, formData) => {
     }
     
   };
-  
-export {app, database, fetchWeddingData,addDataToFirebase}
+ const login = async (email, password) => {
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+    console.log("User logged in:", user);
+    // setVerify(true)
+    return true
+
+  } catch (error) {
+    console.error("Error during login:", error.message);
+   
+  }
+  // signInWithEmailAndPassword(auth, email, password)
+  //   .then((userCredential) => {
+  //     // Signed up 
+  //     const user = userCredential.user;
+  //     if (user === user) {
+  //       return true
+        
+  //     }
+  //     // ...
+  //   })
+  //   .catch((error) => {
+  //     const errorCode = error.code;
+  //     const errorMessage = error.message;
+  //     return error
+  //     // ..
+  //   });
+ }
+export {app, database, fetchWeddingData, addDataToFirebase, login}
