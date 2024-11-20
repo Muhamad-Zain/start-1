@@ -19,7 +19,7 @@ import Page7 from '../section7/page7';
 import Page8 from '../section8/page8';
 import PropTypes from 'prop-types';
 import BubbleAnimation from '@/animation/buble/page';
-import Music from '/public/assets/music/melodi-undangan.mp3'
+import Music from '/public/assets/music/melodi.mp3'
 import AnimateSee from '@/animation/animateSee/page';
 
 

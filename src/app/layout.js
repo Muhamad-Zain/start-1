@@ -1,7 +1,6 @@
 import localFont from "next/font/local";
 // import Head from "next/head";
 import "./globals.css";
-import Head from "next/head";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,8 +24,8 @@ export default function RootLayout({ children }) {
       {/* <Head> */}
       {/* </Head> */}
       <head>
-        <link rel="icon" href="/icons.jpeg" />
-      <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet" />
+        {/* <link rel="icon" href="/icons.jpeg" /> */}
+         <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased `}

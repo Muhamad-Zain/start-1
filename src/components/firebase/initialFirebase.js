@@ -51,8 +51,6 @@ const fetchWeddingData = async (id) => {
     }
 }
 const addDataToFirebase = async (id, formData) => {
-    // const id = formData.id || Date.now().toString();
-    // const id =  Date.now().toString();
 
     try {
       await set(ref(database, `/startOne/${id}`), formData);

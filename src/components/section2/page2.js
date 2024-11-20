@@ -12,8 +12,10 @@ export default function Page2 ({data}){
   
     const [isClient, setIsClient] = useState(false);
     const WeddingDay = data?.date?.all
+    const time = data?.date?.time
+    console.log(time);
     
-    const wedingDate =  new Date(`${WeddingDay}T10:00:00`)
+    const wedingDate =  new Date(`${WeddingDay}T${time}:00`)
 
     useEffect(() => {
       setIsClient(true);
@@ -57,11 +59,13 @@ const renderer = ({days, hours, minutes, seconds, completed }) => {
 };
 
 const handleSaveDate = () => {
+  // const startDate = data?.date?.resepsi?.time
   const startDate = wedingDate.toISOString().replace(/-|:|\.\d\d\d/g,"").split(".")[0] + "Z"; // format UTC
+  // const endDate = 'selesai'
   const endDate = new Date(wedingDate.getTime() + 2 * 60 * 60 * 1000).toISOString().replace(/-|:|\.\d\d\d/g,"").split(".")[0] + "Z"; // 2 jam setelah acara
   const eventTitle = `Wedding of ${data?.name?.nameOne} & ${data?.name?.nameTwo}`;
   const eventDetails = `Join us in celebrating the wedding of ${data?.name?.nameOne} & ${data?.name?.nameTwo}.`;
-  const eventLocation = "Bojonegoro, Indonesia";
+  const eventLocation = `${data?.location?.resepsi?.location}`;
 
   const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventTitle)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(eventDetails)}&location=${encodeURIComponent(eventLocation)}`;
   

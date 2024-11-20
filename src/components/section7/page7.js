@@ -37,6 +37,8 @@ export default function Page7({id}) {
             }
             setUcapan(ucapanList);
         });
+        // return () => unsubscribe()  // Membersihkan listener ketika komponen dibongkar
+
     }, [id]);
     return(
         <section className="bg-[#0c130cfa] py-5  overflow-hidden">
